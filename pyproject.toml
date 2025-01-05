@@ -1,0 +1,50 @@
+[project]
+name = "offapi"
+dynamic = ["version"]
+description = "OpenAPI frontend render offline template."
+authors = [
+    {name = "Keming", email = "kemingy94@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+classifiers = [
+    "Intended Audience :: Developers",
+]
+[project.optional-dependencies]
+dev = [
+    "ruff~=0.8.0",
+    "pytest~=7.4",
+]
+[project.urls]
+"Homepage" = "https://github.com/kemingy/offapi"
+[project.scripts]
+
+[build-system]
+requires = ["pdm-backend", "httpx"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
+[tool.pdm.version]
+source = "scm"
+fallback_version = "0.0.0"
+write_to = "offapi/__version__.py"
+write_template = "__version__ = '{}'"
+[tool.pdm.scripts]
+format_code = "ruff format ."
+fix_check = "ruff check --fix ."
+lint = "ruff check ."
+format = {composite = ["format_code", "fix_check"]}
+
+[tool.ruff]
+target-version = "py39"
+[tool.ruff.lint]
+select = ["E", "F", "G", "B", "I", "SIM", "TID", "PL", "RUF"]
+ignore = ["E501"]
+[tool.ruff.lint.isort]
+known-first-party = ["offapi"]
+[tool.ruff.lint.pylint]
+max-args = 10
