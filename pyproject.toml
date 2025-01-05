@@ -13,10 +13,6 @@ classifiers = [
     "Intended Audience :: Developers",
 ]
 [project.optional-dependencies]
-dev = [
-    "ruff~=0.8.0",
-    "pytest~=7.4",
-]
 [project.urls]
 "Homepage" = "https://github.com/kemingy/offapi"
 [project.scripts]
@@ -24,7 +20,6 @@ dev = [
 [build-system]
 requires = ["pdm-backend", "httpx"]
 build-backend = "pdm.backend"
-
 
 [tool.pdm]
 distribution = true
@@ -38,6 +33,9 @@ format_code = "ruff format ."
 fix_check = "ruff check --fix ."
 lint = "ruff check ."
 format = {composite = ["format_code", "fix_check"]}
+[dependency-groups]
+lint = ["ruff"]
+test = ["pytest"]
 
 [tool.ruff]
 target-version = "py39"

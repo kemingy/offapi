@@ -23,7 +23,7 @@ jobs:
     - uses: pdm-project/setup-pdm@v4
     - name: Install dependencies
       run: |
-        pdm install
+        pdm sync --dev --group lint
     - name: Lint
       run: |
         pdm run lint
