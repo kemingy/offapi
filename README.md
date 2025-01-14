@@ -24,3 +24,9 @@ from offapi import OpenAPITemplate
 swagger_template = OpenAPITemplate.SWAGGER.value
 swagger_template.format(spec_url="your_path_to_the_spec.json")
 ```
+
+## Used by
+
+- [spectree](https://github.com/0b01001001/spectree): API spec validator and OpenAPI document generator for Python web frameworks.
+- [defspec](https://github.com/kemingy/defspec/): Create the OpenAPI spec and document from dataclass, attrs, etc.
+
