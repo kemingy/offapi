@@ -6,6 +6,7 @@ import httpx  # type: ignore
 with open(os.path.join("offapi", "url.json")) as f:
     urls = json.load(f)
 
+
 def download_files(url, path):
     with httpx.stream("GET", url) as response, open(path, "wb") as f:
         for chunk in response.iter_bytes():
