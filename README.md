@@ -1,5 +1,7 @@
 # OffAPI
 
+[![PyPI](https://img.shields.io/pypi/v/offapi.svg)](https://pypi.org/project/offapi/)
+
 OpenAPI template files for offline usage.
 
 This package will download the related files during the build time, and package them into the final distribution.
