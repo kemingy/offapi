@@ -6,9 +6,9 @@ authors = [
     {name = "Keming", email = "kemingy94@gmail.com"},
 ]
 dependencies = []
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 readme = "README.md"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
 classifiers = [
     "Intended Audience :: Developers",
 ]
@@ -27,7 +27,7 @@ test = [
 ]
 
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 [tool.ruff.lint]
 select = ["E", "F", "G", "B", "I", "SIM", "TID", "PL", "RUF"]
 ignore = ["E501"]
@@ -42,9 +42,11 @@ distribution = true
 source = "scm"
 fallback_version = "0.0.0"
 write_to = "offapi/__version__.py"
-write_template = "__version__ = '{}'"
+write_template = "__version__ = \"{}\"\n"
 [tool.pdm.scripts]
 format_code = "ruff format ."
 fix_check = "ruff check --fix ."
-lint = "ruff check ."
+lint_code = "ruff check ."
+format_check = "ruff format --check ."
+lint = {composite = ["lint_code", "format_check"]}
 format = {composite = ["format_code", "fix_check"]}
