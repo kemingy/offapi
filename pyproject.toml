@@ -42,7 +42,7 @@ distribution = true
 source = "scm"
 fallback_version = "0.0.0"
 write_to = "offapi/__version__.py"
-write_template = "__version__ = '{}'"
+write_template = "__version__ = \"{}\""
 [tool.pdm.scripts]
 format_code = "ruff format ."
 fix_check = "ruff check --fix ."
