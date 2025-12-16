@@ -8,7 +8,11 @@ with open(os.path.join("offapi", "url.json")) as f:
 
 
 def download_files(url, path):
-    with httpx.stream("GET", url) as response, open(path, "wb") as f:
+    with (
+        httpx.stream("GET", url, follow_redirects=True) as response,
+        open(path, "wb") as f,
+    ):
+        response.raise_for_status()
         for chunk in response.iter_bytes():
             f.write(chunk)
 
